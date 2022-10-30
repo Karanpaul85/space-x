@@ -31,7 +31,7 @@ const DropDown = (props) => {
 				endIcon={endIcon}
 				color='inherit'
 				onClick={handleClick}>
-				{!selected ? selectedMenu : selected}
+				{!selected ? selectedMenu() : selected}
 			</Button>
 			<Menu
 				id='basic-menu'

@@ -20,6 +20,12 @@ const ContainerSec = () => {
 	const [open, setOpen] = useState(false);
 	const [modalObj, setModalObj] = useState({});
 	const [filterType, setFilterType] = useState("");
+	const launchFilterOptions = [
+		{ type: "All Launches", value: "all" },
+		{ type: "Upcoming Launches", value: "upcoming" },
+		{ type: "Successful Launches", value: "success" },
+		{ type: "Failed Launches", value: "failed" },
+	];
 
 	//get all data from api
 	useEffect(() => {
@@ -95,22 +101,23 @@ const ContainerSec = () => {
 	//all filter
 
 	let pageinationLength = filterArr.length > 0 ? filterArr.length : allLaunched.length;
+
+	const launchFilterValue = () => {
+		let urlLaunch = launchFilterOptions.find((item) => item.value === filterType);
+		return urlLaunch ? urlLaunch.type : "All Launches";
+	};
+
 	return (
 		<>
 			<Container maxWidth='xl' className={styles.mt}>
 				<Grid container style={{ margin: "20px 0" }}>
 					<Grid item xs={12} style={{ display: "flex", justifyContent: "flex-end", padding: 0 }}>
 						<DropDown
-							selectedMenu='All Launches'
+							selectedMenu={launchFilterValue}
 							endIcon={<KeyboardArrowDownIcon />}
 							startIcon={<FilterAltOutlinedIcon />}
 							setFilter={setFilterType}
-							menuOptions={[
-								{ type: "All Launches", value: "all" },
-								{ type: "Upcoming Launches", value: "upcoming" },
-								{ type: "Successful Launches", value: "success" },
-								{ type: "Failed Launches", value: "failed" },
-							]}
+							menuOptions={launchFilterOptions}
 						/>
 					</Grid>
 				</Grid>
