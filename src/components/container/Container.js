@@ -7,10 +7,12 @@ import { useState, useEffect } from "react";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import FilterAltOutlinedIcon from "@mui/icons-material/FilterAltOutlined";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useRef } from "react";
 
 const ContainerSec = () => {
 	let history = useNavigate();
 	const location = useLocation();
+	const initialView = useRef(location.pathname);
 	const [page, setPage] = useState(1);
 	const [allLaunched, setAllLaunched] = useState([]);
 	const [displayLaunched, setDisplayLaunched] = useState([]);
@@ -18,14 +20,15 @@ const ContainerSec = () => {
 	const [open, setOpen] = useState(false);
 	const [modalObj, setModalObj] = useState({});
 	const [filterType, setFilterType] = useState("");
-	const path = location.pathname.split("/")[1];
 
 	//get all data from api
 	useEffect(() => {
+		const path = initialView.current.split("/")[1];
 		fetchData();
-		setFilterType(path);
-		return () => path;
-	}, [path]);
+		if (initialView.current !== "/") {
+			setFilterType(path);
+		}
+	}, []);
 
 	useEffect(() => {
 		//get array as page
