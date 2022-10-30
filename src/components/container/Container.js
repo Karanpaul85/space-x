@@ -18,13 +18,14 @@ const ContainerSec = () => {
 	const [open, setOpen] = useState(false);
 	const [modalObj, setModalObj] = useState({});
 	const [filterType, setFilterType] = useState("");
+	const path = location.pathname.split("/")[1];
 
 	//get all data from api
 	useEffect(() => {
 		fetchData();
-		const path = location.pathname.split("/")[1];
 		setFilterType(path);
-	}, []);
+		return () => path;
+	}, [path]);
 
 	useEffect(() => {
 		//get array as page
