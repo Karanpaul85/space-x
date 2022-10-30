@@ -22,7 +22,8 @@ const ContainerSec = () => {
 	//get all data from api
 	useEffect(() => {
 		fetchData();
-		setFilterType(location.pathname.split("/")[1]);
+		const path = location.pathname.split("/")[1];
+		setFilterType(path);
 	}, []);
 
 	useEffect(() => {
@@ -30,12 +31,27 @@ const ContainerSec = () => {
 		let apiPage = (page - 1) * 12;
 		let restArray = filterArr.length > 0 ? filterArr.slice(apiPage, 12 * page) : allLaunched.slice(apiPage, 12 * page);
 		setDisplayLaunched(restArray);
-		history(`/${filterType}`);
 	}, [page, allLaunched, filterArr]);
 
 	useEffect(() => {
+		const allFilter = () => {
+			let filterArr = allLaunched.filter((item) => {
+				if (filterType === "upcoming") {
+					return item.upcoming === true;
+				} else if (filterType === "success") {
+					return item.launch_success === true;
+				} else if (filterType === "failed") {
+					return item.launch_success === false;
+				} else {
+					return item;
+				}
+			});
+			history(`/${filterType}`);
+			setFilterArr(filterArr);
+			setPage(1);
+		};
 		allFilter();
-	}, [filterType, allLaunched]);
+	}, [filterType, allLaunched, history]);
 
 	//update page
 	const updatePage = (val) => {
@@ -73,22 +89,6 @@ const ContainerSec = () => {
 		return finalTime;
 	};
 	//all filter
-
-	const allFilter = () => {
-		let filterArr = allLaunched.filter((item) => {
-			if (filterType === "upcoming") {
-				return item.upcoming === true;
-			} else if (filterType === "success") {
-				return item.launch_success === true;
-			} else if (filterType === "failed") {
-				return item.launch_success === false;
-			} else {
-				return item;
-			}
-		});
-		setFilterArr(filterArr);
-		setPage(1);
-	};
 
 	let pageinationLength = filterArr.length > 0 ? filterArr.length : allLaunched.length;
 	return (
