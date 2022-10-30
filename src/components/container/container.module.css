@@ -1,0 +1,8 @@
+.mt{
+  margin:40px 0;
+}
+.pagination{
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}

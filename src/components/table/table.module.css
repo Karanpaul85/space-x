@@ -1,0 +1,14 @@
+.tableHead th{
+  border-bottom: none;
+  background: #f1f1f1;
+}
+.tableHead td{
+  border-bottom: none;
+  background-color: transparent;
+}
+.tableHead tbody tr{
+  cursor: pointer;
+}
+.tableHead tbody tr:hover{
+  background-color: #fefefe;
+}
