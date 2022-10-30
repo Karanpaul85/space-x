@@ -66,13 +66,13 @@ const ModalSec = (props) => {
 			{Object.keys(modalObj).length > 0 && (
 				<BootstrapDialog onClose={handleClose} aria-labelledby='customized-dialog-title' open={open} TransitionComponent={Transition}>
 					<BootstrapDialogTitle id='customized-dialog-title' onClose={handleClose}>
-						<Grid container spacing={1}>
+						<Grid container spacing={1} direction={{ xs: "column", md: "row" }}>
 							<Grid item xs={2}>
 								<Avatar alt={modalObj.mission_name} src={modalObj.links.mission_patch_small} sx={{ width: 56, height: 56 }} />
 							</Grid>
 							<Grid item xs={10}>
 								<Grid container spacing={1}>
-									<Grid item xs={3}>
+									<Grid item md={3} xs={6}>
 										<Grid container spacing={1}>
 											<Grid item xs={12} style={{ whiteSpace: "nowrap", textOverflow: "ellipsis", overflow: "hidden" }}>
 												{modalObj.mission_name}
@@ -138,7 +138,7 @@ const ModalSec = (props) => {
 											</Grid>
 										</Grid>
 									</Grid>
-									<Grid item xs={9}>
+									<Grid item md={9} xs={6}>
 										<Chip
 											label={modalObj.upcoming === true ? "Upcoming" : modalObj.launch_success === true ? "Success" : "Failed"}
 											className={modalObj.upcoming === true ? "upcoming" : modalObj.launch_success === true ? "success" : "failed"}
