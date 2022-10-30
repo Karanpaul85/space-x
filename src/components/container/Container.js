@@ -6,7 +6,6 @@ import DropDown from "../dropDown/DropDown";
 import { useState, useEffect } from "react";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import FilterAltOutlinedIcon from "@mui/icons-material/FilterAltOutlined";
-import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const ContainerSec = () => {
@@ -18,8 +17,8 @@ const ContainerSec = () => {
 	const [filterArr, setFilterArr] = useState([]);
 	const [open, setOpen] = useState(false);
 	const [modalObj, setModalObj] = useState({});
-	//const [previousDate, setPreviousDate] = useState("");
 	const [filterType, setFilterType] = useState("");
+
 	//get all data from api
 	useEffect(() => {
 		fetchData();
@@ -31,11 +30,11 @@ const ContainerSec = () => {
 		let apiPage = (page - 1) * 12;
 		let restArray = filterArr.length > 0 ? filterArr.slice(apiPage, 12 * page) : allLaunched.slice(apiPage, 12 * page);
 		setDisplayLaunched(restArray);
+		history(`/${filterType}`);
 	}, [page, allLaunched, filterArr]);
 
 	useEffect(() => {
 		allFilter();
-		history(`/${filterType}`);
 	}, [filterType, allLaunched]);
 
 	//update page
@@ -76,12 +75,6 @@ const ContainerSec = () => {
 	//all filter
 
 	const allFilter = () => {
-		//let valArr = previousDate.split("_");
-		//let pastYear = valArr.length > 1 && valArr[1] === "y" ? valArr[0] : "";
-		//let pastMonth = valArr.length > 1 && valArr[1] === "m" ? valArr[0] : "";
-		//var previousTime = new Date(new Date().getFullYear() - pastYear, new Date().getMonth() - pastMonth, new Date().getDate());
-		//let timeStamp = new Date(previousTime).getTime();
-
 		let filterArr = allLaunched.filter((item) => {
 			if (filterType === "upcoming") {
 				return item.upcoming === true;
