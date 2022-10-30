@@ -5,6 +5,7 @@
 .tableHead td{
   border-bottom: none;
   background-color: transparent;
+  padding: 16px !important;
 }
 .tableHead tbody tr{
   cursor: pointer;

@@ -16,16 +16,22 @@ code {
   color: #981b1c !important;
   text-transform: capitalize;
   font-weight: 600;
+  height: 22px !important;
+    font-size: 12px !important;
 }
 .success{
   background-color: #def7ec !important;
   color: #03543f !important;
   text-transform: capitalize;
   font-weight: 600;
+  height: 22px !important;
+    font-size: 12px !important;
 }
 .upcoming{
   background-color: #fef3c7 !important;
   color: #92400f !important;
   text-transform: capitalize;
   font-weight: 600;
+  height: 22px !important;
+    font-size: 12px !important;
 }

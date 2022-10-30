@@ -68,7 +68,7 @@ const ModalSec = (props) => {
 					<BootstrapDialogTitle id='customized-dialog-title' onClose={handleClose}>
 						<Grid container spacing={1}>
 							<Grid item xs={2}>
-								<Avatar alt='Remy Sharp' src={modalObj.links.mission_patch_small} sx={{ width: 56, height: 56 }} />
+								<Avatar alt={modalObj.mission_name} src={modalObj.links.mission_patch_small} sx={{ width: 56, height: 56 }} />
 							</Grid>
 							<Grid item xs={10}>
 								<Grid container spacing={1}>
@@ -82,22 +82,57 @@ const ModalSec = (props) => {
 											</Grid>
 											<Grid item xs={12}>
 												<Grid container spacing={1}>
-													<Grid item xs={4}>
-														<Avatar
-															alt='Remy Sharp'
-															src='https://www.azavea.com/wp-content/uploads/2020/09/flat-nasa-logo.svg'
-															sx={{ width: 18, height: 18 }}
-														/>
+													<Grid item xs={3}>
+														{modalObj.links.article_link && (
+															<a href={modalObj.links.article_link} target='_blank' rel='noreferrer'>
+																<Avatar
+																	variant='circular'
+																	alt='Nasa Logo'
+																	title='Nasa'
+																	src='https://www.azavea.com/wp-content/uploads/2020/09/flat-nasa-logo.svg'
+																	sx={{ width: 18, height: 18 }}
+																/>
+															</a>
+														)}
 													</Grid>
-													<Grid item xs={4}>
-														<Avatar
-															alt='Remy Sharp'
-															src='https://cdn.icon-icons.com/icons2/2845/PNG/512/wikipedia_logo_icon_181367.png'
-															sx={{ width: 18, height: 18 }}
-														/>
+													<Grid item xs={3}>
+														{modalObj.links.wikipedia && (
+															<a href={modalObj.links.wikipedia} target='_blank' rel='noreferrer'>
+																<Avatar
+																	variant='circular'
+																	alt='wikipedia Logo'
+																	title='Wikipedia'
+																	src='https://cdn.icon-icons.com/icons2/2845/PNG/512/wikipedia_logo_icon_181367.png'
+																	sx={{ width: 18, height: 18 }}
+																/>
+															</a>
+														)}
 													</Grid>
-													<Grid item xs={4}>
-														<Avatar alt='Remy Sharp' src='https://cdn-icons-png.flaticon.com/512/87/87421.png' sx={{ width: 18, height: 18 }} />
+													<Grid item xs={3}>
+														{modalObj.links.video_link && (
+															<a href={modalObj.links.video_link} target='_blank' rel='noreferrer'>
+																<Avatar
+																	variant='circular'
+																	alt='Youtube Logo'
+																	title='Youtube'
+																	src='https://cdn-icons-png.flaticon.com/512/87/87421.png'
+																	sx={{ width: 18, height: 18 }}
+																/>
+															</a>
+														)}
+													</Grid>
+													<Grid item xs={3}>
+														{modalObj.links.presskit && (
+															<a href={modalObj.links.presskit} target='_blank' rel='noreferrer'>
+																<Avatar
+																	variant='circular'
+																	alt='Press Kit Logo'
+																	title='Press Kit'
+																	src='https://www.sindhustanthedocumentary.com/wp-content/uploads/2020/04/presskitlogo.png'
+																	sx={{ width: 18, height: 18 }}
+																/>
+															</a>
+														)}
 													</Grid>
 												</Grid>
 											</Grid>
@@ -115,7 +150,12 @@ const ModalSec = (props) => {
 					</BootstrapDialogTitle>
 					<DialogContent>
 						<Typography gutterBottom>
-							{modalObj.details} {modalObj.links.wikipedia && <a href={modalObj.links.wikipedia}>wikipedia</a>}
+							{modalObj.details}{" "}
+							{modalObj.links.wikipedia && (
+								<a href={modalObj.links.wikipedia} target='_blank' rel='noreferrer'>
+									wikipedia
+								</a>
+							)}
 						</Typography>
 
 						<Table aria-label='a dense table'>
